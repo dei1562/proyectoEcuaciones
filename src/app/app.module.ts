@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms' ;
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
+import { ChartsModule } from 'ng2-charts';
+
 //Angular Material Modules
 import{
   MatToolbarModule,
@@ -42,6 +44,7 @@ import { HomeComponent } from './home/home.component';
     MatInputModule,
     MatTableModule,
     FormsModule,
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

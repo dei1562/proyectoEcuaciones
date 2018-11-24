@@ -1,89 +1,121 @@
 <mat-grid-list cols="1">  
 
-  <mat-grid-tile>
-    <mat-card class="example-card">
-      <mat-card-header>
-        <mat-card-title></mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <mat-grid-list cols="2">  
-
-          <mat-grid-tile>
-            <mat-card style="width: 90%; margin:10px;">
-              <mat-card-header>
-                <mat-card-title>Propagación de conocimiento del producto</mat-card-title>
-              </mat-card-header>
-              <mat-card-content>
-                <mat-form-field class="inputs">
-                  <input matInput type="number" placeholder="Total Población Objetivo" [(ngModel)]="poblacionObjetivo" />
-                </mat-form-field>
-                {{ poblacionObjetivo | number }}
-
-                <mat-card>
-                  <mat-card-header>
-                    <mat-card-subtitle>Población que conoció el producto en el primer año</mat-card-subtitle>
-                  </mat-card-header>
-                  <mat-card-content>
-                    <mat-form-field class="inputs">
-                      <input matInput type="number" placeholder="Población" [(ngModel)]="pYearOne" />
-                    </mat-form-field>
-                    {{ pYearOne | number }}
-                  </mat-card-content>
-                </mat-card>
-
-                <mat-card>
-                  <mat-card-header>
-                    <mat-card-subtitle>Tiempo (años) objetivo mayores a 1</mat-card-subtitle>
-                  </mat-card-header>
-                  <mat-card-content>
-                    <mat-form-field class="inputs">
-                      <input matInput type="number" placeholder="Años" [(ngModel)]="t" />
-                    </mat-form-field>
-                  </mat-card-content>
-                </mat-card>
-
-                <p *ngIf="resultado">En el tiempo de {{ t }} años un total de {{ resultado | number }} personas han escuchado el producto.</p>
-
-              </mat-card-content>
-              <mat-card-actions>
-                  <button mat-raised-button color="primary" (click)="calcularPoblacion()">Calcular resultado</button>
-              </mat-card-actions>
-            </mat-card>
-          </mat-grid-tile>
-
-          <mat-grid-tile>
-            <mat-card style="width: 90%; margin:10px;">
-              <mat-card-header>
-                <mat-card-title></mat-card-title>
-              </mat-card-header>
-              <mat-card-content>
-                <table *ngIf="resultado" mat-table [dataSource]="totales" class="mat-elevation-z8">
-
-                    <!--- Note that these columns can be defined in any order.
-                          The actual rendered columns are set as a property on the row definition" -->
-                  
-                    <!-- Position Column -->
-                    <ng-container matColumnDef="year">
-                      <th mat-header-cell *matHeaderCellDef> Año </th>
-                      <td mat-cell *matCellDef="let element"> {{element.year}} </td>
-                    </ng-container>
-                  
-                    <!-- Name Column -->
-                    <ng-container matColumnDef="poblacion">
-                      <th mat-header-cell *matHeaderCellDef> Población </th>
-                      <td mat-cell *matCellDef="let element"> {{element.poblacion | number}} </td>
-                    </ng-container>
-                  
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                  </table>
-              </mat-card-content>
-            </mat-card>            
-          </mat-grid-tile>
-          
-        </mat-grid-list>
-      </mat-card-content>
-    </mat-card>
-  </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-title></mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-grid-list cols="2">  
   
-</mat-grid-list>
+            <mat-grid-tile>
+              <mat-card style="width: 90%; margin:10px;">
+                <mat-card-header>
+                  <mat-card-title>Propagación de conocimiento del producto</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <mat-form-field class="inputs">
+                    <input matInput type="number" placeholder="Total Población Objetivo" [(ngModel)]="poblacionObjetivo" />
+                  </mat-form-field>
+                  {{ poblacionObjetivo | number }}
+  
+                  <mat-card>
+                    <mat-card-header>
+                      <mat-card-subtitle>Población que conoció el producto en el primer año</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                      <mat-form-field class="inputs">
+                        <input matInput type="number" placeholder="Población" [(ngModel)]="pYearOne" />
+                      </mat-form-field>
+                      {{ pYearOne | number }}
+                    </mat-card-content>
+                  </mat-card>
+  
+                  <mat-card>
+                    <mat-card-header>
+                      <mat-card-subtitle>Tiempo (años) objetivo mayores a 1</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                      <mat-form-field class="inputs">
+                        <input matInput type="number" placeholder="Años" [(ngModel)]="t" />
+                      </mat-form-field>
+                    </mat-card-content>
+                  </mat-card>
+  
+                  <p *ngIf="resultado">En el tiempo de {{ t }} años un total de {{ resultado | number }} personas han escuchado el producto.</p>
+  
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button color="primary" (click)="calcularPoblacion()">Calcular resultado</button>
+                </mat-card-actions>
+
+                <mat-card-content>
+                    <mat-card>
+                      <mat-card-header>
+                          <mat-card-title>Calcular tiempo Propagación</mat-card-title>
+                        <mat-card-subtitle>Población objetivo</mat-card-subtitle>
+                      </mat-card-header>
+                      <mat-card-content>
+                        <mat-form-field class="inputs">
+                          <input matInput type="number" placeholder="Población" [(ngModel)]="p" />
+                        </mat-form-field>
+                        {{ p | number }}
+                      </mat-card-content>
+                    </mat-card>
+    
+                    <p *ngIf="tResultado">El tiempo que tomara para que la población conozca el producto es de {{ tResultado }} años.</p>
+    
+                  </mat-card-content>
+                  <mat-card-actions>
+                      <button mat-raised-button color="primary" (click)="calcularT()">Calcular tiempo</button>
+                  </mat-card-actions>
+              </mat-card>
+            </mat-grid-tile>
+  
+            <mat-grid-tile>
+              <mat-card style="width: 90%; margin:10px;">
+                <mat-card-header>
+                  <mat-card-title></mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="row" *ngIf="showChart">
+                      <div class="col-md-6">
+                        <div style="display: block;">
+                        <canvas baseChart width="400" height="150"
+                                    [datasets]="lineChartData"
+                                    [labels]="lineChartLabels"
+                                    [options]="lineChartOptions"
+                                    [colors]="lineChartColors"
+                                    [legend]="lineChartLegend"
+                                    [chartType]="lineChartType"></canvas>
+                        </div>
+                      </div>
+                      <div class="col-md-6" style="margin-bottom: 10px">
+
+                          <div class="example-container mat-elevation-z8">
+                            <table mat-table [dataSource]="totales">
+                              <ng-container matColumnDef="year">
+                                <th mat-header-cell *matHeaderCellDef> Año </th>
+                                <td mat-cell *matCellDef="let element"> {{element.year}} </td>
+                              </ng-container>
+                              <ng-container matColumnDef="poblacion">
+                                <th mat-header-cell *matHeaderCellDef> Población </th>
+                                <td mat-cell *matCellDef="let element"> {{element.poblacion | number}} </td>
+                              </ng-container>
+                              <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
+                              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                          </div>
+                          
+                      </div>
+                    </div>                  
+                </mat-card-content>
+              </mat-card>            
+            </mat-grid-tile>
+            
+          </mat-grid-list>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    
+  </mat-grid-list>

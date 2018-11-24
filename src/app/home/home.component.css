@@ -29,3 +29,8 @@ table {
 .inputs {
     width: 50%;
 }
+
+.example-container {
+    height: 300px;
+    overflow: auto;
+}
