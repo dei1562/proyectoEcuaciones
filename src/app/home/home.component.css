@@ -1,0 +1,31 @@
+.example-card {
+    width: 98%;
+    max-width: 98%;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.mat-expansion-panel-header-title,
+.mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+:host ::ng-deep .mat-grid-tile .mat-figure {
+  align-items: unset !important;
+}
+
+table {
+    width: 100%;
+}
+
+.inputs {
+    width: 50%;
+}
